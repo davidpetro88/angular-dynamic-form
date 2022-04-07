@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {JsonFormData} from "../form/form.component";
+import {FormGroupModel} from "../form/form.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +10,15 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getFormFields(): Observable<JsonFormData> {
-    return this.http.get<JsonFormData>(`assets/api/form.json`);
+  getFormFields(): Observable<FormGroupModel> {
+    return this.http.get<FormGroupModel>(`assets/api/form.json`);
   }
 
-  getFormRegister(): Observable<JsonFormData> {
-    return this.http.get<JsonFormData>(`assets/api/register.json`);
+  getFormRegister(): Observable<FormGroupModel> {
+    return this.http.get<FormGroupModel>(`assets/api/register.json`);
   }
 
-  getFormEdit(): Observable<JsonFormData> {
-    return this.http.get<JsonFormData>(`assets/api/edit.json`);
+  getFormEdit(): Observable<FormGroupModel> {
+    return this.http.get<FormGroupModel>(`assets/api/edit.json`);
   }
 }

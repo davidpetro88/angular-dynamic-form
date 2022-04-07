@@ -22,12 +22,33 @@
       }
     },
     {
+      "name": "password",
+      "label": "New Password",
+      "value": "",
+      "type": "password",
+      "typeValue": "string",
+      "validators": {
+        "required": true,
+        "minLength": 5
+      }
+    },
+    {
       "name": "agreeTerms",
       "label": "Do you agree with terms?",
       "value": "true",
       "typeValue": "boolean",
       "type": "checkbox",
       "validators": {}
+    },
+    {
+      "name": "agreeTermsDefaultFalse",
+      "label": "Do you agree with terms default false?",
+      "value": "false",
+      "typeValue": "boolean",
+      "type": "checkbox",
+      "validators": {
+        "required": true
+      }
     }
   ]
 }

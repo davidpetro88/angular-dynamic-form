@@ -1,5 +1,13 @@
 <h3>Register</h3>
 
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
 <div class="form" *ngIf="!!jsonFormData">
-  <app-form [jsonFormData]="jsonFormData"></app-form>
+  <app-sub-form-dynamic-dynamic [parentForm]="form" [jsonFormData]="jsonFormData"></app-sub-form-dynamic-dynamic>
 </div>
+
+<div class="row-2">
+  <div class="btn-position">
+    <button mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
+  </div>
+</div>
+</form>

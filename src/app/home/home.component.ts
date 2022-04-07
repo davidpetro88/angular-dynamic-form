@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../integration/api.service";
-import {JsonFormData} from "../form/form.component";
+import {FormGroupModel} from "../form/form.model";
 
 @Component({
   selector: 'app-home',
@@ -9,13 +9,13 @@ import {JsonFormData} from "../form/form.component";
 })
 export class HomeComponent implements OnInit {
 
-  jsonFormData?: JsonFormData;
+  jsonFormData?: FormGroupModel;
 
   constructor(private readonly _api: ApiService) { }
 
   ngOnInit(): void {
     this._api.getFormFields().subscribe(formResult => {
-      console.log('my form result ---> ', formResult);
+      console.log('my form-dynamic result ---> ', formResult);
       this.jsonFormData = formResult;
     })
   }

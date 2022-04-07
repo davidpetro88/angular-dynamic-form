@@ -5,20 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { FormComponent } from './form/form.component';
+import { FormDynamicComponent } from './form/form-dynamic/form-dynamic.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { EditComponent } from './edit/edit.component';
+import { SubFormComponent } from './form/sub-form-dynamic/sub-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
+    FormDynamicComponent,
     HomeComponent,
     RegisterComponent,
-    EditComponent
+    EditComponent,
+    SubFormComponent
   ],
   imports: [
     BrowserModule,

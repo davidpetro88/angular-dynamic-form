@@ -1,0 +1,58 @@
+<div [formGroup]="parentForm" *ngIf="isFormLoad">
+  <mat-list class="container">
+    <mat-list-item class="row" *ngFor="let control of jsonFormData?.controls">
+      <mat-label>{{ control.label }}</mat-label>
+      <input matInput
+             *ngIf="
+        [
+          'text',
+          'password',
+          'email',
+          'number',
+          'search',
+          'tel',
+          'url'
+        ].includes(control.type)
+      "
+             [type]="control.type"
+             [formControlName]="control.name"
+             [value]="control.value"
+      >
+      <textarea matInput
+                *ngIf="control.type === 'textarea'"
+                [formControlName]="control.name"
+                [value]="control.value"
+      ></textarea>
+
+      <mat-checkbox
+        *ngIf="control.type === 'checkbox'"
+        [formControlName]="control.name"
+        [checked]="false">
+      </mat-checkbox>
+
+
+      <mat-slide-toggle
+        *ngIf="control.type === 'toggle'"
+        [formControlName]="control.name"
+        [checked]="convertToBoolean(control.value)">
+      </mat-slide-toggle>
+
+      <mat-slider
+        *ngIf="control.type === 'range'"
+        [min]="convertToNumber(control?.options?.min)"
+        [max]="convertToNumber(control?.options?.max)"
+        [formControlName]="control.name"
+      >
+        <mat-icon
+          size="small"
+          slot="start">
+          <!--        [name]="control.options.icon"-->
+        </mat-icon>
+        <!--      <ion-icon slot="end" [name]="control.options.icon"></ion-icon>-->
+        <mat-icon slot="end"></mat-icon>
+
+      </mat-slider>
+
+    </mat-list-item>
+  </mat-list>
+</div>

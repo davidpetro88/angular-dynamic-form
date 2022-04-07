@@ -1,63 +1,30 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-
-
-interface JsonFormValidators {
-  min?: number;
-  max?: number;
-  required?: boolean;
-  requiredTrue?: boolean;
-  email?: boolean;
-  minLength?: boolean;
-  maxLength?: boolean;
-  pattern?: string;
-  nullValidator?: boolean;
-}
-
-interface JsonFormControlOptions {
-  min?: string;
-  max?: string;
-  step?: string;
-  icon?: string;
-}
-
-interface JsonFormControls {
-  name: string;
-  label: string;
-  value: string;
-  type: string;
-  typeValue: string;
-  options?: JsonFormControlOptions;
-  required: boolean;
-  validators: JsonFormValidators;
-}
-
-export interface JsonFormData {
-  controls: JsonFormControls[];
-}
-
+import {FormControlModel, FormGroupModel} from "../form.model";
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'app-sub-form-dynamic-dynamic',
+  templateUrl: './sub-form.component.html',
+  styleUrls: ['./sub-form.component.scss']
 })
-export class FormComponent implements OnInit {
-
-  @Input() jsonFormData?: JsonFormData;
-
-  public myForm: FormGroup = this.fb.group({});
+export class SubFormComponent implements OnInit, OnDestroy {
+  @Input() parentForm!: FormGroup;
+  @Input() jsonFormData?: FormGroupModel;
+  isFormLoad: boolean = false;
 
   constructor(private fb: FormBuilder) {}
 
-
   ngOnInit(): void {
-    if (!!this.jsonFormData) {
-      this._createForm(this.jsonFormData.controls);
-    }
+    setTimeout(() => {
+      if (!!this.jsonFormData) {
+        this._createForm(this.jsonFormData.controls);
+        this.isFormLoad = true;
+      }
+    }, 100)
+
   }
 
-  _createForm(controls: JsonFormControls[]) {
+  _createForm(controls: FormControlModel[]) {
     for (const control of controls) {
       const validatorsToAdd = [];
 
@@ -103,14 +70,14 @@ export class FormComponent implements OnInit {
         }
       }
 
-      this.myForm.addControl(
+      this.parentForm.addControl(
         control.name,
         this.fb.control(this._castValue(control), validatorsToAdd)
       );
     }
   }
 
-  _castValue(control: JsonFormControls): any {
+  _castValue(control: FormControlModel): any {
     switch (control.typeValue) {
       case 'number':
         return Number(control.value);
@@ -121,19 +88,16 @@ export class FormComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    console.log('Form valid: ', this.myForm.valid);
-    console.log('Form values: ', this.myForm.value);
-  }
-
-
   convertToBoolean(boolValue?: string): boolean {
     if (!!boolValue) return boolValue === 'true';
-     return false;
+    return false;
   }
 
   convertToNumber(number?: string): number {
     if (!!number) return Number(number);
     return 0
+  }
+
+  ngOnDestroy(): void {
   }
 }

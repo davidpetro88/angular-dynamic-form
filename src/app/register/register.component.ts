@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {JsonFormData} from "../form/form.component";
 import {ApiService} from "../integration/api.service";
+import {FormGroupModel} from "../form/form.model";
 
 @Component({
   selector: 'app-register',
@@ -9,7 +9,7 @@ import {ApiService} from "../integration/api.service";
 })
 export class RegisterComponent implements OnInit {
 
-  jsonFormData?: JsonFormData;
+  jsonFormData?: FormGroupModel;
 
   constructor(private readonly _api: ApiService) { }
 
