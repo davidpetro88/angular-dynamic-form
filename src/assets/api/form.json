@@ -1,0 +1,77 @@
+{
+  "controls": [
+    {
+      "name": "firstName",
+      "label": "First name",
+      "value": "David",
+      "type": "text",
+      "typeValue": "string",
+      "validators": {
+        "required": true,
+        "minLength": 10
+      }
+    },
+    {
+      "name": "lastName",
+      "label": "Last name",
+      "value": "",
+      "type": "text",
+      "typeValue": "string",
+      "validators": {}
+    },
+    {
+      "name": "comments",
+      "label": "Comments",
+      "value": "",
+      "type": "textarea",
+      "typeValue": "string",
+      "validators": {}
+    },
+    {
+      "name": "agreeTermsTrue",
+      "label": "Do you agree Default True?",
+      "value": "true",
+      "typeValue": "boolean",
+      "type": "checkbox",
+      "validators": {}
+    },
+    {
+      "name": "agreeTermsFalse",
+      "label": "Do you agree Default False?",
+      "value": "false",
+      "type": "checkbox",
+      "typeValue": "boolean",
+      "validators": {}
+    },
+    {
+      "name": "lightDarkFalse",
+      "label": "Toggle dark mode Default False",
+      "value": "false",
+      "type": "toggle",
+      "typeValue": "boolean",
+      "validators": {}
+    },
+    {
+      "name": "lightDarkTrue",
+      "label": "Toggle dark mode Default True",
+      "value": "true",
+      "type": "toggle",
+      "typeValue": "boolean",
+      "validators": {}
+    },
+    {
+      "name": "size",
+      "label": "Size",
+      "value": "",
+      "type": "range",
+      "typeValue": "number",
+      "options": {
+        "min": "0",
+        "max": "100",
+        "step": "1",
+        "icon": "sunny"
+      },
+      "validators": {}
+    }
+  ]
+}

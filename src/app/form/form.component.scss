@@ -1,0 +1,25 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.row {
+  min-height: 80px !important;
+}
+
+.row-2 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.row-2 .btn-position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+:host::ng-deep .mat-list-item-content {
+  display: flex;
+  flex-direction: column !important;
+}

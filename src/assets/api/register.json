@@ -1,0 +1,33 @@
+{
+  "controls": [
+    {
+      "name": "firstName",
+      "label": "First name",
+      "value": "",
+      "type": "text",
+      "typeValue": "string",
+      "validators": {
+        "required": true,
+        "minLength": 5
+      }
+    },
+    {
+      "name": "lastName",
+      "label": "Last name",
+      "value": "",
+      "type": "text",
+      "typeValue": "string",
+      "validators": {
+        "required": true
+      }
+    },
+    {
+      "name": "agreeTerms",
+      "label": "Do you agree with terms?",
+      "value": "false",
+      "typeValue": "boolean",
+      "type": "checkbox",
+      "validators": {}
+    }
+  ]
+}
